@@ -6,6 +6,7 @@ public class TriggerScript : MonoBehaviour {
 	public Light roomLight;
 	[SerializeField]
 	public Collider playerCollider;
+	public bool IsTriggerEntered;
 
 	void Start()
 	{
@@ -14,9 +15,10 @@ public class TriggerScript : MonoBehaviour {
 
 	void OnTriggerEnter(Collider enteredCollider) 
 	{
-		if (enteredCollider == playerCollider)
+		if (enteredCollider.name == "Player")
 		{
 			roomLight.enabled = true;
+			IsTriggerEntered = true;
 		}
 	}
 

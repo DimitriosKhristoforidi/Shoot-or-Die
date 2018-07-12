@@ -4,6 +4,7 @@ public class EnemyScript : MonoBehaviour
 {
 	public float health = 100f;
 	public Transform enemyTarget;
+	public Collider triggerCollider;
 	UnityEngine.AI.NavMeshAgent navMeshAgent;
 
 	void Start()
@@ -13,7 +14,10 @@ public class EnemyScript : MonoBehaviour
 
 	void Update()
 	{
-		navMeshAgent.SetDestination(enemyTarget.position);
+		if (IsAttackPossible()) 
+		{
+			navMeshAgent.SetDestination(enemyTarget.position);
+		}
 	}
 
 	public void TakeDamage(float amount)
@@ -26,4 +30,9 @@ public class EnemyScript : MonoBehaviour
 	}
 
 
+	public bool IsAttackPossible()
+	{
+		
+		return false;
+	}
 }

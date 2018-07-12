@@ -1,26 +1,25 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-public class GyroController : MonoBehaviour {
+public class GyroController : MonoBehaviour
+{
 
 	private bool isGyroEnabled;
 	private Gyroscope playerGyroscope;
 
-	private GameObject cameraContainer;
+	public GameObject cameraContainer;
 	public Quaternion cameraRotation;
 
-	void Start () 
+	void Start()
 	{
-		cameraContainer = new GameObject("Camera Container");
 		cameraContainer.transform.position = transform.position;
 		transform.SetParent(cameraContainer.transform);
 
 		isGyroEnabled = EnableGyroscope();
 	}
 
-
-	void Update () {
-
-		if (isGyroEnabled) 
+	void Update()
+	{
+		if (isGyroEnabled)
 		{
 			transform.localRotation = playerGyroscope.attitude * cameraRotation;
 		}
